@@ -1,7 +1,7 @@
 # Gruppo Sglavo, Scaccia, Bardini, Rremilli
 Progetto 21.08
 
-Extra scelto: analisi secondaria per classificazione binaria
+Extra scelto: analisi secondaria per classificazione binaria; pca e confusion matrix componenti principali nell'unsupervised learning.
 
 Tiziano: task preprocessing
 Emanuela: distribuzione dati + correlazione
