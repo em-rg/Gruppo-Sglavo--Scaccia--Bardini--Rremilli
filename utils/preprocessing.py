@@ -5,7 +5,7 @@ import seaborn as sns
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import LabelEncoder
 
-def preprocessing(filepath="student-por.csv"):
+def preprocessing(filepath="../student-por.csv"):
     """
     Preprocessa il dataset degli studenti.
 
