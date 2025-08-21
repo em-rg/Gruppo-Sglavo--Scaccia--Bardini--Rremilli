@@ -1,14 +1,15 @@
 from sklearn.cluster import DBSCAN
-from utils.preprocessing import preprocessing
+from sklearn.preprocessing import MinMaxScaler
+from preprocessing import preprocessing
 import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
 from sklearn.metrics import confusion_matrix, silhouette_score, silhouette_samples
 from sklearn.cluster import KMeans
 
-def unsupervized():
+def unsupervised():
     # Get the preprocessed data from preprocessing.py
-    df = preprocessing()
+    df = preprocessing(scaler_param=MinMaxScaler())
 
     print(df.head())
 
@@ -136,4 +137,4 @@ def unsupervized():
     plt.savefig("5_confusion_matrix.png")
 
 if __name__ == "__main__":
-    unsupervized()
+    unsupervised()

@@ -5,7 +5,7 @@ import seaborn as sns
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import LabelEncoder
 
-def preprocessing(filepath="./student-por.csv"):
+def preprocessing(filepath="./student-por.csv", scaler_param=StandardScaler()):
     """
     Preprocessa il dataset degli studenti.
 
@@ -44,7 +44,7 @@ def preprocessing(filepath="./student-por.csv"):
 
     # Seleziona le colonne numeriche e normalizza
     numeric_cols = df.select_dtypes(include=[np.number]).columns
-    scaler = StandardScaler()
+    scaler = scaler_param
     df[numeric_cols] = scaler.fit_transform(df[numeric_cols])
 
     # Crea un oggetto LabelEncoder
