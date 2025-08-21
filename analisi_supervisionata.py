@@ -41,7 +41,7 @@ def analisi_supervisionata():
     X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=42)
 
     # Inizializza il classificatore Random Forest
-    rf = RandomForestClassifier(n_estimators=200, random_state=42)
+    rf = RandomForestClassifier(n_estimators=300, random_state=42)
 
     # Addestra il modello sui dati di training
     rf.fit(X_train, y_train)
@@ -53,6 +53,25 @@ def analisi_supervisionata():
     cm = confusion_matrix(y_test, y_pred)
     cr = classification_report(y_test, y_pred)
     acc = accuracy_score(y_test, y_pred)
+
+    # Visualizza la confusion matrix con matplotlib
+    plt.figure()
+    plt.title("Confusion Matrix")
+    plt.imshow(cm, interpolation='nearest', cmap=plt.cm.Blues)
+    plt.colorbar()
+    tick_marks = np.arange(2)
+    plt.xticks(tick_marks, ['Basso', 'Alto'])
+    plt.yticks(tick_marks, ['Basso', 'Alto'])
+    thresh = cm.max() / 2.
+    for i in range(cm.shape[0]):
+        for j in range(cm.shape[1]):
+            plt.text(j, i, format(cm[i, j], 'd'),
+                     ha="center", va="center",
+                     color="white" if cm[i, j] > thresh else "black")
+    plt.ylabel('True label')
+    plt.xlabel('Predicted label')
+    plt.tight_layout()
+    plt.show()
 
     # Visualizza l'importanza delle feature
     importances = rf.feature_importances_
@@ -73,3 +92,12 @@ def analisi_supervisionata():
         'feature_importances': importances,
         'feature_names': features.columns.values
     }
+
+if __name__ == "__main__":
+    results = analisi_supervisionata()
+    print("Analisi completata con successo!")
+    print(f"Accuratezza: {results['accuracy_score']:.2f}")
+    print("Matrice di confusione:")
+    print(results['confusion_matrix'])
+    print("Report di classificazione:")
+    print(results['classification_report'])
