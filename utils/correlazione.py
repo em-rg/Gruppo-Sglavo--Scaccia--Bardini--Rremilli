@@ -5,9 +5,8 @@ import seaborn as sns
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.preprocessing import LabelEncoder
-# Aggiungiamo l'import per la funzione preprocessing
-# Assumendo che sia in un modulo chiamato preprocessing_module nel package utils
-from preprocessing import preprocessing
+# Correggiamo l'import per la funzione preprocessing
+from utils.preprocessing import preprocessing
 
 def analyze_grades(df):
     """Analizza e visualizza statistiche e distribuzione dei voti G1, G2, G3"""
@@ -175,8 +174,8 @@ def analyze_grade_relationships(df):
     print("- famrel: buone relazioni familiari correlano con migliori voti")
     print("- Dalc/Walc: consumo di alcol correlato con voti più bassi")
 
-def main():
-    """Funzione principale che coordina l'analisi dei dati"""
+def run_correlation_analysis():
+    """Funzione wrapper che esegue l'intera analisi di correlazione"""
     # Carica i dati preprocessati
     print("Caricamento e preprocessing dei dati...")
     df = preprocessing()
@@ -205,6 +204,11 @@ def main():
     print("RELAZIONI TRA I VOTI")
     print("="*80)
     analyze_grade_relationships(df)
+
+# Modifichiamo la funzione main esistente per usare run_correlation_analysis
+def main():
+    """Funzione principale che coordina l'analisi dei dati"""
+    run_correlation_analysis()
 
 if __name__ == "__main__":
     main()

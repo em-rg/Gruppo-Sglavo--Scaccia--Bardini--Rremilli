@@ -1,4 +1,4 @@
-from preprocessing import preprocessing
+from utils.preprocessing import preprocessing
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
@@ -201,7 +201,7 @@ def analisi_supervisionata():
     visualizza_confusion_matrix(cm_lr, "Confusion Matrix - Logistic Regression", plt.cm.Oranges)
     importances = visualizza_importanza_feature(rf, features, X_train)
 
-    return {
+    results = {
         'rf_confusion_matrix': cm_rf,
         'rf_classification_report': cr_rf,
         'rf_accuracy_score': acc_rf,
@@ -213,9 +213,6 @@ def analisi_supervisionata():
         'lr_accuracy_score': acc_lr,
         'lr_val_accuracy_score': acc_val_lr
     }
-
-if __name__ == "__main__":
-    results = analisi_supervisionata()
     print("Analisi completata con successo!")
     print(f"Accuratezza Random Forest: {results['rf_accuracy_score']:.2f}")
     print(f"Accuratezza Logistic Regression: {results['lr_accuracy_score']:.2f}")
@@ -227,3 +224,6 @@ if __name__ == "__main__":
     print(results['lr_confusion_matrix'])
     print("Report di classificazione Logistic Regression:")
     print(results['lr_classification_report'])
+
+if __name__ == "__main__":
+    analisi_supervisionata()
