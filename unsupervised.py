@@ -3,7 +3,7 @@ import preprocessing
 import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
-from sklearn.metrics import silhouette_score, silhouette_samples
+from sklearn.metrics import confusion_matrix, silhouette_score, silhouette_samples
 from sklearn.cluster import KMeans
 
 # Get the preprocessed data from preprocessing.py
@@ -123,3 +123,13 @@ plt.ylabel("Silhouette Score")
 plt.grid(True)
 plt.tight_layout()
 plt.savefig("4_silhouette_score.png")
+
+# Get the most informative initial features from PCA using pca.components_
+pca_components = pca.components_
+# Plot the confusion matrix between the PCA components and the original features
+plt.figure(figsize=(10, 6))
+sns.heatmap(pca_components, annot=True, cmap='coolwarm', xticklabels=df.columns, yticklabels=[f'PC{i+1}' for i in range(pca_components.shape[0])])
+plt.title("Confusion Matrix")
+plt.xlabel("Predicted Label")
+plt.ylabel("True Label")
+plt.savefig("5_confusion_matrix.png")

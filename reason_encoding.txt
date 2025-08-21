@@ -1,0 +1,5 @@
+Reason encoding:
+  course -> 0
+  home -> 1
+  other -> 2
+  reputation -> 3
