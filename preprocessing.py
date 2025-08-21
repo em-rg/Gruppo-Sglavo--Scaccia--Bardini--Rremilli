@@ -36,8 +36,8 @@ def preprocessing(filepath="student-por.csv"):
 
     # Valori nulli
     null_counts = df.isnull().sum()
-    print("valori mancanti:")
-    print(null_counts[null_counts > 0])
+    #print("valori mancanti:")
+    #print(null_counts[null_counts > 0])
 
     # Gestione dei valori nulli 
     df = df.dropna()
@@ -69,7 +69,7 @@ def preprocessing(filepath="student-por.csv"):
         # Crea un dizionario che mappa i valori originali a quelli codificati
         Country_dict = dict(zip(Country_keys, Country_values))
         # Stampa il dizionario
-        print(Country_dict)
+        #print(Country_dict)
 
     return df
 
