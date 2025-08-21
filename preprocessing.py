@@ -6,6 +6,22 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import LabelEncoder
 
 def preprocessing(filepath="student-por.csv"):
+    """
+    Preprocessa il dataset degli studenti.
+
+    Carica il dataset, mostra informazioni e statistiche, gestisce i valori nulli,
+    normalizza le colonne numeriche e codifica le variabili categoriche.
+
+    Parameters
+    ----------
+    filepath : str, optional
+        Percorso del file CSV da caricare (default "student-por.csv").
+
+    Returns
+    -------
+    pandas.DataFrame
+        Il DataFrame preprocessato, pronto per l'analisi.
+    """
     # Carica il dataset
     df = pd.read_csv(filepath)
 
@@ -20,8 +36,8 @@ def preprocessing(filepath="student-por.csv"):
 
     # Valori nulli
     null_counts = df.isnull().sum()
-    print("valori mancanti:")
-    print(null_counts[null_counts > 0])
+    #print("valori mancanti:")
+    #print(null_counts[null_counts > 0])
 
     # Gestione dei valori nulli 
     df = df.dropna()
@@ -53,6 +69,9 @@ def preprocessing(filepath="student-por.csv"):
         # Crea un dizionario che mappa i valori originali a quelli codificati
         Country_dict = dict(zip(Country_keys, Country_values))
         # Stampa il dizionario
-        print(Country_dict)
+        #print(Country_dict)
 
     return df
+
+if __name__ == "__main__":
+    preprocessing()
