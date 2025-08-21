@@ -1,0 +1,13 @@
+Mjob encoding:
+  teacher -> 4
+  at_home -> 0
+  health -> 1
+  other -> 2
+  services -> 3
+
+# TODO instert this code to preprocessing
+if Columns[i] == "Mjob":
+    # Print Country keys and the relative values uniquely
+    print("Mjob encoding:")
+    for key, value in set(zip(Country_keys, Country_values)):
+        print(f"  {key} -> {value}")
