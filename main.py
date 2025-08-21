@@ -1,13 +1,13 @@
 from utils.correlazione import run_correlation_analysis
 from utils.analisi_supervisionata import analisi_supervisionata
-from utils.unsupervised import unsupervized
+from utils.unsupervised import unsupervised
 
 
 
 def main():
     run_correlation_analysis()
     analisi_supervisionata()
-    unsupervized()
+    unsupervised()
 
 
 if __name__ == "__main__":
